@@ -235,6 +235,7 @@ class SimpleFocusListWalker(ListWalker, MonitoredFocusList):
     def set_focus(self, position):
         """Set focus position."""
         self.focus = position
+        self._modified()
 
     def next_position(self, position):
         """
@@ -313,7 +314,7 @@ class ListBox(Widget, WidgetContainerMixin):
         if getattr(body, 'get_focus', None):
             self._body = body
         else:
-            self._body = PollingListWalker(body)
+            self._body = SimpleListWalker(body)
         self._invalidate()
 
     body = property(_get_body, _set_body, doc="""
@@ -994,12 +995,11 @@ class ListBox(Widget, WidgetContainerMixin):
         if focus_widget is None: # empty listbox, can't do anything
             return key
 
-        if self._command_map[key] not in [CURSOR_PAGE_UP, CURSOR_PAGE_DOWN]:
-            if focus_widget.selectable():
-                key = focus_widget.keypress((maxcol,),key)
+        if focus_widget.selectable():
+            key = focus_widget.keypress((maxcol,),key)
             if key is None:
                 self.make_cursor_visible((maxcol,maxrow))
-                return
+                return None
 
         def actual_key(unhandled):
             if unhandled:

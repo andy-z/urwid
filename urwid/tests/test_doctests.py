@@ -2,8 +2,8 @@ import unittest
 import doctest
 
 from .. import (widget, wimp, decoration, display_common, main_loop,
-                monitored_list, raw_display, split_repr, util, signals,
-                graphics)
+                monitored_list, numedit, raw_display, split_repr, util,
+                signals, graphics)
 
 
 def load_tests(loader, tests, ignore):
@@ -13,6 +13,7 @@ def load_tests(loader, tests, ignore):
         decoration,
         display_common,
         main_loop,
+        numedit,
         monitored_list,
         raw_display,
         split_repr, # override function with same name

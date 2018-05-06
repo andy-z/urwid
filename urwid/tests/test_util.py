@@ -175,7 +175,7 @@ class TagMarkupTest(unittest.TestCase):
             util.decompose_tagmarkup((1, 2, 3)))
 
     def test_bad_type(self):
-        self.assertRaises(urwid.TagMarkupException, lambda:
+        self.assertRaises(util.TagMarkupException, lambda:
             util.decompose_tagmarkup(5))
 
 

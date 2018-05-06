@@ -199,7 +199,7 @@ class CheckBox(WidgetWrap):
         Set the CheckBox state.
 
         state -- True, False or "mixed"
-        do_callback -- False to supress signal from this change
+        do_callback -- False to suppress signal from this change
 
         >>> changes = []
         >>> def callback_a(cb, state, user_data):
@@ -373,7 +373,7 @@ class RadioButton(CheckBox):
 
         state -- True, False or "mixed"
 
-        do_callback -- False to supress signal from this change
+        do_callback -- False to suppress signal from this change
 
         If state is True all other radio buttons in the same button
         group will be set to False.

@@ -20,6 +20,8 @@
 #
 # Urwid web site: http://excess.org/urwid/
 
+from __future__ import division, print_function
+
 import os
 import sys
 import time
@@ -43,7 +45,7 @@ from .escape import DEC_SPECIAL_CHARS, ALT_DEC_SPECIAL_CHARS
 from .canvas import Canvas
 from .widget import Widget, BOX
 from .display_common import AttrSpec, RealTerminal, _BASIC_COLORS
-from .compat import ord2, chr2, B, bytes, PYTHON3
+from .compat import ord2, chr2, B, bytes, PYTHON3, xrange
 
 ESC = chr(27)
 

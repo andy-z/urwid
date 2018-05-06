@@ -2,7 +2,8 @@ import unittest
 import doctest
 
 from .. import (widget, wimp, decoration, display_common, main_loop,
-                monitored_list, raw_display, split_repr, util, signals)
+                monitored_list, raw_display, split_repr, util, signals,
+                graphics)
 
 
 def load_tests(loader, tests, ignore):
@@ -14,9 +15,10 @@ def load_tests(loader, tests, ignore):
         main_loop,
         monitored_list,
         raw_display,
-        split_repr,
+        split_repr, # override function with same name
         util,
         signals,
+        graphics,
         ]
     for m in module_doctests:
         tests.addTests(doctest.DocTestSuite(m,

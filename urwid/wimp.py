@@ -35,7 +35,7 @@ from .command_map import ACTIVATE
 
 class SelectableIcon(Text):
     _selectable = True
-    def __init__(self, text, cursor_position=1):
+    def __init__(self, text, cursor_position=0):
         """
         :param text: markup for this widget; see :class:`Text` for
                      description of text markup
@@ -58,7 +58,7 @@ class SelectableIcon(Text):
         >>> si
         <SelectableIcon selectable flow widget '[!]'>
         >>> si.render((4,), focus=True).cursor
-        (1, 0)
+        (0, 0)
         >>> si = SelectableIcon("((*))", 2)
         >>> si.render((8,), focus=True).cursor
         (2, 0)
@@ -103,9 +103,9 @@ class CheckBox(WidgetWrap):
         return frozenset([FLOW])
 
     states = {
-        True: SelectableIcon("[X]"),
-        False: SelectableIcon("[ ]"),
-        'mixed': SelectableIcon("[#]") }
+        True: SelectableIcon("[X]", 1),
+        False: SelectableIcon("[ ]", 1),
+        'mixed': SelectableIcon("[#]", 1) }
     reserve_columns = 4
 
     # allow users of this class to listen for change events
@@ -322,9 +322,9 @@ class CheckBox(WidgetWrap):
 
 class RadioButton(CheckBox):
     states = {
-        True: SelectableIcon("(X)"),
-        False: SelectableIcon("( )"),
-        'mixed': SelectableIcon("(#)") }
+        True: SelectableIcon("(X)", 1),
+        False: SelectableIcon("( )", 1),
+        'mixed': SelectableIcon("(#)", 1) }
     reserve_columns = 4
 
     def __init__(self, group, label, state="first True",
